@@ -11,17 +11,12 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Fill="#BBBBBB" Grid.Column="0"/>
-        <WrapPanel Grid.Column="0">
-            <Rectangle Fill="#AAAAAA" Width="100" Height="100"/>
-            <Rectangle Fill="#777777" Width="100" Height="100"/>
-            <Rectangle Fill="#333333" Width="100" Height="100"/>
-            <Rectangle Fill="#FF3333" Width="100" Height="100"/>
-            <!-- 紅色 -->
-            <Rectangle Fill="#00AED8" Width="100" Height="100"/>
-            <!-- 藍色 -->
-            <Rectangle Fill="#DDDD66" Width="100" Height="100"/>
-            <!-- 黃色綠 -->
-        </WrapPanel>
+        <WrapPanel Name="myPanel" Grid.Column="0"/>
+
+        <Rectangle Grid.Column="1" Fill="DimGray" Width="1" HorizontalAlignment="Left"/>
+        <StackPanel Grid.Column="1">
+            <Button Name="btnAdd" Width="100" Height="30" Click="BtnAdd_OnClick">Add</Button>
+            <Button Name="btnClear" Width="100" Height="30" Click="BtnClear_OnClick">Clear</Button>
+        </StackPanel>
     </Grid>
 </Window>

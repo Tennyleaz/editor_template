@@ -16,24 +16,23 @@ using System.Windows.Shapes;
 namespace editor_template
 {
     /// <summary>
-    /// MainWindow.xaml 的互動邏輯
+    /// NumericUpDown.xaml 的互動邏輯
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NumericUpDown : UserControl
     {
-        public MainWindow()
+        public NumericUpDown()
         {
             InitializeComponent();
         }
 
-        private void BtnAdd_OnClick(object sender, RoutedEventArgs e)
+        private void UpButton_OnClick(object sender, RoutedEventArgs e)
         {
-            NumericUpDown numericUpDown = new NumericUpDown();
-            myPanel.Children.Add(numericUpDown);
+            throw new NotImplementedException();
         }
 
-        private void BtnClear_OnClick(object sender, RoutedEventArgs e)
+        private void DownButton_OnClick(object sender, RoutedEventArgs e)
         {
-            myPanel.Children.Clear();
+            throw new NotImplementedException();
         }
     }
 }
