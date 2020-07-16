@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="#BBBBBB" Grid.Column="0"/>
+        <WrapPanel Grid.Column="0">
+            <Rectangle Fill="#AAAAAA" Width="100" Height="100"/>
+            <Rectangle Fill="#777777" Width="100" Height="100"/>
+            <Rectangle Fill="#333333" Width="100" Height="100"/>
+            <Rectangle Fill="#FF3333" Width="100" Height="100"/>
+            <!-- 紅色 -->
+            <Rectangle Fill="#00AED8" Width="100" Height="100"/>
+            <!-- 藍色 -->
+            <Rectangle Fill="#DDDD66" Width="100" Height="100"/>
+            <!-- 黃色綠 -->
+        </WrapPanel>
     </Grid>
 </Window>
