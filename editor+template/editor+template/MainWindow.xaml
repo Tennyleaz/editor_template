@@ -11,7 +11,9 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <WrapPanel Name="myPanel" Grid.Column="0"/>
+        <ScrollViewer Grid.Column="0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <WrapPanel Name="myPanel"/>
+        </ScrollViewer>
 
         <Rectangle Grid.Column="1" Fill="DimGray" Width="1" HorizontalAlignment="Left"/>
         <StackPanel Grid.Column="1">
