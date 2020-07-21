@@ -1,0 +1,141 @@
+﻿<UserControl x:Class="editor_template.DeviceUnit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:editor_template"
+             mc:Ignorable="d" 
+             Width="200" Height="200"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Text="IP:"
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Stretch"
+                   TextAlignment="Right" 
+                   Padding="0,5,0,5"  
+                   Background="Gray" />
+        <StackPanel Grid.Row="0" 
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="4" 
+                    Orientation="Horizontal" >
+            <TextBox Name="IPBox1" 
+                     VerticalAlignment="Center" 
+                     HorizontalAlignment="Stretch"
+                     MaxLength="3"
+                     Padding="0,5,0,5" 
+                     TextAlignment="Right" 
+                     TextChanged="IPBox1_TextChanged" 
+                     Width="30"/>
+            <TextBlock Text="."
+                       Background="White"
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Stretch"
+                       Padding="0,5,0,5" 
+                       TextAlignment="Right" />
+            <TextBox Name="IPBox2" 
+                     VerticalAlignment="Center" 
+                     HorizontalAlignment="Stretch"
+                     MaxLength="3"
+                     Padding="0,5,0,5" 
+                     TextAlignment="Right" 
+                     TextChanged="IPBox2_TextChanged" 
+                     Width="30"/>
+            <TextBlock Text="."
+                       Background="White"
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Stretch"
+                       Padding="0,5,0,5" 
+                       TextAlignment="Right" />
+            <TextBox Name="IPBox3" 
+                     VerticalAlignment="Center" 
+                     HorizontalAlignment="Stretch"
+                     MaxLength="3"
+                     Padding="0,5,0,5" 
+                     TextAlignment="Right" 
+                     TextChanged="IPBox3_TextChanged" 
+                     Width="30"/>
+            <TextBlock Text="."
+                       Background="White"
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Stretch"
+                       Padding="0,5,0,5" 
+                       TextAlignment="Right" />
+            <TextBox Name="IPBox4" 
+                     VerticalAlignment="Center" 
+                     HorizontalAlignment="Stretch"
+                     MaxLength="3"
+                     Padding="0,5,0,5" 
+                     TextAlignment="Right" 
+                     TextChanged="IPBox4_TextChanged" 
+                     Width="30"/>
+        </StackPanel>
+
+        <TextBlock Text="Port:"
+                   Grid.Row="1"
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Stretch"
+                   TextAlignment="Right" 
+                   Padding="0,5,0,5" 
+                   Background="Gray" />
+        <TextBox Name="PortBox" 
+                 Grid.Row="1" 
+                 Grid.Column="1"
+                 VerticalAlignment="Center" 
+                 HorizontalAlignment="Stretch"
+                 MaxLength="5"
+                 Padding="0,5,0,5" 
+                 TextAlignment="Left" 
+                 TextChanged="PortBox_TextChanged"/>
+
+        <Button Content="Connect"
+                      Name="ConnectButton"
+                      Grid.Column="0" 
+                      Grid.Row="2" 
+                      Click="ConnectButton_OnClick"/>
+        <Button Content="Close"
+                      Name="CloseButton"
+                      Grid.Column="1" 
+                      Grid.Row="2" 
+                      Click="CloseButton_OnClick"/>
+
+        <Border BorderThickness="1" BorderBrush="Gray" 
+                Grid.Row="3"
+                Grid.ColumnSpan="4" 
+                Background="#E0FFFFFF"
+                VerticalAlignment="Stretch" 
+                HorizontalAlignment="Stretch">
+        <ScrollViewer>
+            <TextBlock Name="SendBlock"
+                       TextAlignment="Left" 
+                       Padding="5"/>
+            </ScrollViewer>
+        </Border>
+
+        <Border BorderThickness="1" BorderBrush="Gray" 
+                Grid.Row="4"
+                Grid.ColumnSpan="4" 
+                Background="#E0FFFFFF"
+                VerticalAlignment="Stretch" 
+                HorizontalAlignment="Stretch">
+            <ScrollViewer>
+                <TextBlock Name="ReceiveBlock"
+                           TextAlignment="Left" 
+                           Padding="5"/>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>

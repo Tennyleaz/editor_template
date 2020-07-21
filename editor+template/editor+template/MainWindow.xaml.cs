@@ -20,6 +20,7 @@ namespace editor_template
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<DeviceUnit> DeviceUnitList;
         public MainWindow()
         {
             InitializeComponent();
@@ -27,8 +28,8 @@ namespace editor_template
 
         private void BtnAdd_OnClick(object sender, RoutedEventArgs e)
         {
-            NumericUpDown numericUpDown = new NumericUpDown();
-            myPanel.Children.Add(numericUpDown);
+            DeviceUnit DeviceUnit = new DeviceUnit();
+            myPanel.Children.Add(DeviceUnit);
         }
 
         private void BtnClear_OnClick(object sender, RoutedEventArgs e)
