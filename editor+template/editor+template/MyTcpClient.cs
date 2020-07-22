@@ -27,34 +27,35 @@ namespace editor_template
             Task task;
             var timeOut = TimeSpan.FromSeconds(5);
             var cancellationCompletionSource = new TaskCompletionSource<bool>();
+            isConnected = false;
             try
             {
                 using(var cts = new CancellationTokenSource(timeOut))
                 {
-                    using(tcpClient = new TcpClient())
-                    {
-                        task = tcpClient.ConnectAsync(ipa, port);
+                    tcpClient = new TcpClient();
+                    task = tcpClient.ConnectAsync(ipa, port);
 
-                        using(cts.Token.Register(() => cancellationCompletionSource.TrySetResult(true)))
+                    using(cts.Token.Register(() => cancellationCompletionSource.TrySetResult(true)))
+                    {
+                        if (task != await Task.WhenAny(task, cancellationCompletionSource.Task))
                         {
-                            if (task != await Task.WhenAny(task, cancellationCompletionSource.Task))
-                            {
-                                throw new OperationCanceledException(cts.Token);
-                            }
+                            throw new OperationCanceledException(cts.Token);
                         }
-                        nStream = tcpClient.GetStream();
-                        nStream.ReadTimeout = 5000;
-                        isConnected = true;
                     }
+                    nStream = tcpClient.GetStream();
+                    //nStream.ReadTimeout = 500; //default: infinite wait
+                    isConnected = true;
                 }
             }
             catch (OperationCanceledException)
             {
+                tcpClient = null;
                 nStream = null;
                 isConnected = false;
             }
             catch(Exception)
             {
+                tcpClient = null;
                 nStream = null;
                 isConnected = false;
             }
@@ -80,7 +81,7 @@ namespace editor_template
             int received_length = 0;
             try
             {
-                Array.Clear(datareceive, offset, length);
+                //Array.Clear(datareceive, offset, length);
                 received_length = nStream.Read(datareceive, offset, length);
             }
             catch (ObjectDisposedException)

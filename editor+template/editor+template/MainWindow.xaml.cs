@@ -20,7 +20,6 @@ namespace editor_template
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<DeviceUnit> DeviceUnitList;
         public MainWindow()
         {
             InitializeComponent();
@@ -34,6 +33,8 @@ namespace editor_template
 
         private void BtnClear_OnClick(object sender, RoutedEventArgs e)
         {
+            foreach (DeviceUnit Unit in myPanel.Children)
+                Unit.CloseConnection();
             myPanel.Children.Clear();
         }
     }

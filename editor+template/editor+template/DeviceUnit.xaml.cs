@@ -103,7 +103,7 @@ namespace editor_template
             int i = 0;
             while (IsReceiving)
             {
-                //Debug.WriteLine("Received " + i++);
+                Debug.WriteLine("Received " + i++);
                 DataReceivedLength = myTcpClient.Receive(DataReceived, 0, 64);
                 if (DataReceivedLength == 0)
                 {
@@ -111,19 +111,28 @@ namespace editor_template
                 }
                 else
                 {
-                    Debug.WriteLine(DataReceived.ToString());
+                    //Debug.WriteLine(DataReceived.ToString());
+                    Debug.WriteLine(BitConverter.ToString(DataReceived));
                 }
-                //Debug.WriteLine("Received " + i++);
+                Debug.WriteLine("Received " + i++);
             }
         }
 
-        private async void CloseButton_OnClick(object sender, RoutedEventArgs e)
+        private void CloseButton_OnClick(object sender, RoutedEventArgs e)
         {
-            IsReceiving = false;
-            await Task.Delay(1000);
-            myTcpClient.Close();
-            CloseButton.IsEnabled = false;
-            ConnectButton.IsEnabled = true;
+            CloseConnection();
+        }
+
+        public async void CloseConnection()
+        {
+            if (IsReceiving)
+            {
+                IsReceiving = false;
+                await Task.Delay(100);
+                myTcpClient.Close();
+                CloseButton.IsEnabled = false;
+                ConnectButton.IsEnabled = true;
+            }
         }
 
         private void IPBox1_TextChanged(object sender, TextChangedEventArgs e)
