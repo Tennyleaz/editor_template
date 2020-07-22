@@ -13,7 +13,7 @@ namespace editor_template
     /// <summary>
     /// Client class
     /// </summary>
-    public class MyTcpClient
+    public class MyTcpClient : IDisposable
     {
         /// <summary>
         /// 連線至主機
@@ -48,20 +48,22 @@ namespace editor_template
                     }
                 }
             }
-            catch (OperationCanceledException)
+            catch (OperationCanceledException ex)
             {
+                Console.WriteLine(ex);
                 nStream = null;
                 isConnected = false;
             }
-            catch(Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 nStream = null;
                 isConnected = false;
             }
         }
         public void Close()
         {
-            tcpClient.Close();
+            tcpClient?.Close();
             tcpClient = null;
             nStream = null;
             isConnected = false;
@@ -83,15 +85,24 @@ namespace editor_template
                 Array.Clear(datareceive, offset, length);
                 received_length = nStream.Read(datareceive, offset, length);
             }
-            catch (ObjectDisposedException)
+            catch (ObjectDisposedException ex)
             {
-
+                Console.WriteLine(ex);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                Console.WriteLine(ex);
             }
             return received_length;
+        }
+
+        public void Dispose()
+        {
+            tcpClient?.Close();
+            tcpClient?.Dispose();
+            nStream?.Close(0);
+            nStream?.Dispose();
+            isConnected = false;
         }
     }
 }

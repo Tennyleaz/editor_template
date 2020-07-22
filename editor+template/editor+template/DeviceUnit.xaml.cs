@@ -23,7 +23,7 @@ namespace editor_template
     /// </summary>
     public partial class DeviceUnit : UserControl
     {
-        private MyTcpClient myTcpClient = new MyTcpClient();
+        private readonly MyTcpClient myTcpClient = new MyTcpClient();
         private IPAddress myIP;
         private int myPort;
         private int IP_OK = 0;
@@ -62,6 +62,12 @@ namespace editor_template
             IP_OK = 0b1111;
             Port_OK = true;
             Update_IPAdress();
+        }
+
+        ~DeviceUnit()
+        {
+            myTcpClient.Dispose();
+            ReceivingTask?.Dispose();
         }
 
         private void Update_IPAdress()
